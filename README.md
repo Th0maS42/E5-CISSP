@@ -163,9 +163,9 @@ docker tag nom_image:tag: your_username/nom_image:tag_name_for_hub
 docker push your_username/nom_image:tag_name_for_hub
 ```
 
-. Docker Hub repositories (a update)
+. Docker Hub repositories
 
-![alt text](screen/repository.png)
+![alt text](screen/repository.jpg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
