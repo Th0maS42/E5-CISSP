@@ -39,131 +39,66 @@ Voici la structure du projet:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FILES CONFIGURATIONS -->
-## Configurations
-
-. Contenu du fichier mynginxconf.conf
-
-``` bash
-# Django Soft UI Dashboard
-upstream django-soft-ui {
-    server django-soft-ui:8040;
-}
-
-server {
-    listen 5005;
-    server_name localhost;
-
-    location / {
-        proxy_pass http://django-soft-ui;
-        proxy_set_header Host $host:$server_port;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-
-# Flask Soft UI Design
-upstream flask-soft-ui {
-    server flask-soft-ui:8070;
-}
-
-server {
-    listen 5008;
-    server_name localhost;
-
-    location / {
-        proxy_pass http://flask-soft-ui;
-        proxy_set_header Host $host:$server_port;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-
-# Flask Material Dashboard
-upstream ecommerce-flask-stripe {
-    server ecommerce-flask-stripe:8060;
-}
-
-server {
-    listen 5007;
-    server_name localhost;
-
-    location / {
-        proxy_pass http://ecommerce-flask-stripe;
-        proxy_set_header Host $host:$server_port;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-
-# Flask Atlantis Dark
-upstream rocket-django {
-    server rocket-django:8050;
-}
-
-server {
-    listen 5006;
-    server_name localhost;
-
-    location / {
-        proxy_pass http://rocket-django;
-        proxy_set_header Host $host:$server_port;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-
-```
 
 . Contenu du docker-compose.yml
 
 ``` bash
-version: '3.8'
+ersion: '3.7'
 
 services:
   django-soft-ui:
-    build: ./apps/django-soft-ui-dashboard
-    ports:
-      - "5080:5080"
+    # build: ./django-soft-ui-dashboard
+    image: th0m8s/django-soft-ui-dashboard:prod
+    ports:     
+      - "5080:5005"
     networks:
       - app_network
 
   flask-soft-ui:
-    build: ./apps/flask-soft-ui-design
-    ports:
-      - "5083:5083"
+    # build: ./apps/flask-soft-ui-design
+    image: th0m8s/flask-soft-ui-dashboard:prod
+    ports: 
+      - "5083:5008"
     networks:
       - app_network
 
   flask-material-dashboard:
-    build: ./apps/ecommerce-flask-stripe
+    # build: ./apps/ecommerce-flask-stripe
+    image: th0m8s/flask-material-dashboard:prod
     ports:
-      - "5082:5082"
+      - "5082:5007"
     networks:
       - app_network
 
   flask-atlantis-dark:
-    build: ./apps/rocket-django
-    ports:
-      - "5081:5081"
+    # build: ./apps/rocket-django
+    image: th0m8s/flask-atlantis-dark:prod
+    ports:      
+      - "5081:5006"
     networks:
       - app_network
 
   nginx:
-    image: nginx:latest
-    ports:
-      - "5080:5080"
-      - "5081:5081"
-      - "5082:5082"
-      - "5083:5083"
+    image: "nginx:mainline-alpine3.20-slim"
+    ports:      
+      - "5080:5005"
+      - "5081:5006"
+      - "5082:5007"
+      - "5083:5008"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
     depends_on:
       - django-soft-ui
       - flask-soft-ui
       - flask-material-dashboard
       - flask-atlantis-dark
-    networks:
-      - app_network
 
 networks:
   app_network:
+    driver: bridge
+  web_network:
     driver: bridge
 
 ```
