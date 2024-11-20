@@ -138,7 +138,7 @@ Testez vos applications en local sur les ports suivants:
 
   </ul>
 
-4- Pushez vos images sur le docker hub
+3- Pushez vos images sur le docker hub
 
 . Connectez vous au docker hub:
 
