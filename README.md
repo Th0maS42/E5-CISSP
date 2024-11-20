@@ -201,4 +201,4 @@ Idéal pour les projets de commerce électronique.
 
 ## Diagramme Projet
 
-![alt text](screen/shema.png)
+![alt text](screen/schema.png)
