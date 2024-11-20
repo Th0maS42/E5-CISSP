@@ -120,21 +120,13 @@ docker compose up -d
 docker images
 docker ps
 ```
-
-. Screen présentant les images
-
-![alt text](screens/image.png)
-
-``` bash
-docker ps
-```
 ou
 ``` bash
 docker ps -a
 ```
 . Screen présentant les conteneurs en cours d'exécution
 
-![alt text](screens/dockerps.png)
+![alt text](screen/dockerps.png)
 
 Testez vos applications en local sur les ports suivants:
   <ul>
