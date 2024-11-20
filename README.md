@@ -106,21 +106,15 @@ networks:
 <!-- GETTING STARTED -->
 ## Etape du build
 
-### Pour déployer les applications du répertoire "devoir":
+### Pour déployer les applications:
 
-1- Positionnez vous dans ce répertoire avec la commande suivante:
-
-``` bash
-cd devoir
-```
-
-2- Exécuter la commande suivante pour mettre en place votre iac:
+1- Exécuter la commande suivante pour mettre en place vos application:
 
 ``` bash
 docker compose up -d
 ```
 
-3- Après le build, tapez les commandes suivantes:
+2- Après le build, tapez les commandes suivantes:
 
 ``` bash
 docker images
