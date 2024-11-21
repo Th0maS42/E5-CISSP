@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   django-soft-ui:
     # build: ./django-soft-ui-dashboard
