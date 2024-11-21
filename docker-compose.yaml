@@ -36,7 +36,7 @@ services:
   nginx:
     image: "nginx:mainline-alpine3.20-slim"
     ports:      
-      - "5080:5005"
+      - "5084:5005"
       - "5081:5006"
       - "5082:5007"
       - "5083:5008"
