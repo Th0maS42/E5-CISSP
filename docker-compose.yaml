@@ -3,7 +3,7 @@ services:
     # build: ./django-soft-ui-dashboard
     image: th0m8s/django-soft-ui-dashboard:prod
     ports:     
-      - "5080:5005"
+      - "5084:5005"
     networks:
       - app_network
 
