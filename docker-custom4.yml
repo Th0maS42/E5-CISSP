@@ -1,0 +1,34 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+# Mettre le bon timezone
+timezone: Europe/Paris
+
+# Créer un utilisateur
+users:
+- name: ubuntu
+  gecos: Ubuntu User
+  shell: /bin/bash
+  home: /home/ubuntu
+  groups: users,admin,wheel,lxd,docker
+  sudo: ALL=(ALL) NOPASSWD:ALL
+
+# Installation des packages nécessaire (uidmap pour docker rootless)
+packages:
+  - apt-transport-https
+  - bash-completion
+  - ca-certificates
+  - curl
+  - git
+  - uidmap
+
+runcmd:
+  - curl -fsSL https://get.docker.com/ -o get-docker.sh && sh get-docker.sh
+  - curl -fsSL https://get.docker.com/rootless --force | sh
+  - systemctl start docker
+  - systemctl enable docker
+  - sudo apt install docker-compose -y
+
+  - wget https://raw.githubusercontent.com/Th0maS42/E5-CISSP/refs/heads/main/docker-compose.yaml && docker compose up -d
+  
