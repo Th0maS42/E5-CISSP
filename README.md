@@ -50,7 +50,7 @@ services:
     # build: ./django-soft-ui-dashboard
     image: th0m8s/django-soft-ui-dashboard:prod
     ports:     
-      - "5080:5005"
+      - "5084:5005"
     networks:
       - app_network
 
@@ -81,7 +81,7 @@ services:
   nginx:
     image: "nginx:mainline-alpine3.20-slim"
     ports:      
-      - "5080:5005"
+      - "5084:5005"
       - "5081:5006"
       - "5082:5007"
       - "5083:5008"
@@ -130,7 +130,7 @@ docker ps -a
 
 Testez vos applications en local sur les ports suivants:
   <ul>
-    <li><a href="#http://localhost:5080">http://localhost:5080</a></li>
+    <li><a href="#http://localhost:5084">http://localhost:5080</a></li>
     <li><a href="#http://localhost:5081">http://localhost:5081</a></li>
     <li><a href="#http://localhost:5082">http://localhost:5082</a></li>
     <li><a href="#http://localhost:5083">http://localhost:5083</a></li>
